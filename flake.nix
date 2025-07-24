@@ -17,7 +17,7 @@
         dev-tools = with pkgs; [
           nodejs
           typescript-language-server
-          vscode-extensions.dbaeumer.vscode-eslint
+          vscode-langservers-extracted
         ];
       in
       {
