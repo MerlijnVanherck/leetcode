@@ -1,15 +1,14 @@
 function canConstruct(ransomNote: string, magazine: string): boolean {
-  const map = new Map<string, number>();
+  const map = new Array<number>('z'.charCodeAt(0) + 1).fill(0);
 
-  for (const c of ransomNote)
-    map.set(c, (map.get(c) ?? 0) - 1);
+  for (let i = 0; i < ransomNote.length; i++)
+    map[ransomNote.charCodeAt(i)] -= 1;
 
-  for (const c of magazine)
-    map.set(c, (map.get(c) ?? 0) + 1);
+  for (let i = 0; i < magazine.length; i++)
+    map[magazine.charCodeAt(i)] += 1;
 
-  for (const n of map.values())
-    if (n < 0)
-      return false;
-
-  return true;
+  if (map.findIndex(n => n < 0) === -1)
+    return true;
+  else
+    return false;
 }
